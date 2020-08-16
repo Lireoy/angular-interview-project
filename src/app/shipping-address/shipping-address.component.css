@@ -1,0 +1,19 @@
+.content {
+  background-color: #eaeaea;
+  display: flex;
+  padding: 2em;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-width {
+  width: 50vw;
+}
+
+.input-bottom-margin {
+  margin-bottom: 2em;
+}
+
+.card-width {
+  min-width: 400px;
+}

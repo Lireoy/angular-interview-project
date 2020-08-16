@@ -1,0 +1,9 @@
+.content {
+  border-radius: 15px;
+  display: flex;
+  margin: 3em auto 2em;
+  padding: 2em;
+  max-width: calc(960px + 2em);
+  flex-direction: column;
+  align-items: center;
+}
