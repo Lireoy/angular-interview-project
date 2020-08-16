@@ -1,0 +1,11 @@
+<mat-form-field appearance="standard" class="input-width">
+  <mat-label>E-mail cím</mat-label>
+  <input matInput [formControl]="emailFormControl" placeholder="email.cim@pelda.com">
+  <mat-icon matSuffix>alternate_email</mat-icon>
+  <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+    Kérem adjon meg egy valós email címet!
+  </mat-error>
+  <mat-error *ngIf="emailFormControl.hasError('required')">
+    Az email cím megadása <strong>kötelező</strong>
+  </mat-error>
+</mat-form-field>
