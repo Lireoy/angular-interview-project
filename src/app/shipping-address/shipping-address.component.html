@@ -1,49 +1,13 @@
 <div class="content" role="main">
   <mat-card class="card-width">
+
+    <div>
+      <app-email-validator>loading</app-email-validator>
+    </div>
+    <div>
+      <app-name-validator>loading</app-name-validator>
+    </div>
     <mat-list>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-        <app-email-validator>loading</app-email-validator>
-        </p>
-      </mat-list-item>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>E-mail cím</mat-label>
-            <input matInput placeholder="email.cim@pelda.com">
-            <mat-icon matSuffix>alternate_email</mat-icon>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>E-mail cím még egyszer</mat-label>
-            <input matInput placeholder="email.cim@pelda.com">
-            <mat-icon matSuffix>alternate_email</mat-icon>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>Vezetéknév</mat-label>
-            <input matInput placeholder="Próba">
-            <mat-icon matSuffix>person</mat-icon>
-            <mat-hint>Legalább 2 karakter hosszú</mat-hint>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>Keresztnév</mat-label>
-            <input matInput placeholder="István">
-            <mat-icon matSuffix>person</mat-icon>
-            <mat-hint>Legalább 3 karakter hosszú</mat-hint>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
       <mat-list-item class="input-bottom-margin">
         <p>
           <mat-form-field appearance="standard" class="input-width">

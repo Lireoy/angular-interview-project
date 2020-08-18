@@ -13,15 +13,21 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {EmailValidatorComponent} from './email-validator/email-validator.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {EqualValidator} from './email-validator/EqualValidator';
+import {CommonModule} from '@angular/common';
+import {NameValidatorComponent} from './name-validator/name-validator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShippingAddressComponent,
     EmailValidatorComponent,
+    EqualValidator,
+    NameValidatorComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
