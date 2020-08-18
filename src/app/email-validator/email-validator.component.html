@@ -1,32 +1,34 @@
-<mat-list>
-  <mat-list-item class="input-bottom-margin">
-    <mat-form-field appearance="standard" class="input-width">
-      <mat-label>E-mail cím</mat-label>
-      <input
-        type="email"
-        matInput
-        [formControl]="email"
-        placeholder="email.cim@pelda.com"
-        required>
-      <mat-icon matSuffix>alternate_email</mat-icon>
-      <mat-error>
-        Kérem adjon meg egy valós email címet!
-      </mat-error>
-    </mat-form-field>
-  </mat-list-item>
-  <mat-list-item class="input-bottom-margin">
-    <mat-form-field appearance="standard" class="input-width">
-      <mat-label>E-mail cím mégegyszer</mat-label>
-      <input
-        type="email"
-        matInput
-        [formControl]="confirmEmail"
-        placeholder="email.cim@pelda.com"
-        required>
-      <mat-icon matSuffix>alternate_email</mat-icon>
-      <mat-error validateEqual="email">
-        Az email cím megadása <strong>kötelező</strong>
-      </mat-error>
-    </mat-form-field>
-  </mat-list-item>
-</mat-list>
+<form [formGroup]="emailGroup">
+  <mat-list>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>E-mail cím</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="email.cim@pelda.com"
+          required>
+        <mat-icon matSuffix>alternate_email</mat-icon>
+        <mat-error>
+          Kérem adjon meg egy valós email címet!
+        </mat-error>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>E-mail cím mégegyszer</mat-label>
+        <input
+          formControlName="confirmEmail"
+          matInput
+          placeholder="email.cim@pelda.com"
+          required
+          type="email">
+        <mat-icon matSuffix>alternate_email</mat-icon>
+        <mat-error>
+          Az email címeknek egyezniük kell.
+        </mat-error>
+      </mat-form-field>
+    </mat-list-item>
+  </mat-list>
+</form>

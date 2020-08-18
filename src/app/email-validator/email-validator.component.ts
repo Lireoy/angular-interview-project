@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-email-validator',
@@ -8,15 +8,31 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class EmailValidatorComponent {
 
-  email = new FormControl('', [
-    Validators.required,
-    Validators.email,
-    Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
-  ]);
+  emailGroup = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.pattern('^[a-z0-9.%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
+    ]),
+    confirmEmail: new FormControl('', [
+      this.matchValidator
+    ])
+  });
 
-  confirmEmail = new FormControl('', [
-    Validators.required,
-    Validators.email,
-    Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')
-  ]);
+  matchValidator(control: AbstractControl): ValidationErrors {
+    if (!control.parent) {
+      return {error: 'Parent null'};
+    }
+    // console.log((control.parent as FormGroup).controls.email.value);
+    // console.log((control.parent as FormGroup).controls.confirmEmail.value);
+
+    const email: string = (control.parent as FormGroup).controls.email.value;
+    const confirmEmail: string = (control.parent as FormGroup).controls.confirmEmail.value;
+
+    if (email !== confirmEmail) {
+      return {error: 'Email mismatch'};
+    } else {
+      return null;
+    }
+  }
 }
