@@ -5,9 +5,9 @@
         <mat-label>E-mail cím</mat-label>
         <input
           type="email"
-          matInput
           formControlName="email"
           placeholder="email.cim@pelda.com"
+          matInput
           required>
         <mat-icon matSuffix>alternate_email</mat-icon>
         <mat-error>
@@ -19,11 +19,15 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>E-mail cím mégegyszer</mat-label>
         <input
+          type="email"
           formControlName="confirmEmail"
-          matInput
           placeholder="email.cim@pelda.com"
+          matInput
           required
-          type="email">
+          onDrag="return false"
+          onDrop="return false"
+          onAutocomplete="return false"
+          autocomplete=off>
         <mat-icon matSuffix>alternate_email</mat-icon>
         <mat-error>
           Az email címeknek egyezniük kell.
