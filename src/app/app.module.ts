@@ -17,6 +17,7 @@ import {EqualValidator} from './email-validator/EqualValidator';
 import {CommonModule} from '@angular/common';
 import {NameValidatorComponent} from './name-validator/name-validator.component';
 import { PhoneValidatorComponent } from './phone-validator/phone-validator.component';
+import { CountryValidatorComponent } from './country-validator/country-validator.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PhoneValidatorComponent } from './phone-validator/phone-validator.compo
     EqualValidator,
     NameValidatorComponent,
     PhoneValidatorComponent,
+    CountryValidatorComponent,
   ],
   imports: [
     BrowserModule,

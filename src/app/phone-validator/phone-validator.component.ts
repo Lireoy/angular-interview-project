@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-phone-validator',
   templateUrl: './phone-validator.component.html',
   styleUrls: ['./phone-validator.component.css']
 })
-export class PhoneValidatorComponent implements OnInit {
+export class PhoneValidatorComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  phoneNumber = new FormControl('', [
+    Validators.required,
+    Validators.pattern('^[0-9]*$')
+  ]);
 
 }
