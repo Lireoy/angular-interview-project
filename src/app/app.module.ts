@@ -19,6 +19,7 @@ import {NameValidatorComponent} from './name-validator/name-validator.component'
 import {PhoneValidatorComponent} from './phone-validator/phone-validator.component';
 import {CountryValidatorComponent} from './country-validator/country-validator.component';
 import {MatSelectModule} from '@angular/material/select';
+import { ZipCityAutofillComponent } from './zip-city-autofill/zip-city-autofill.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatSelectModule} from '@angular/material/select';
     NameValidatorComponent,
     PhoneValidatorComponent,
     CountryValidatorComponent,
+    ZipCityAutofillComponent,
   ],
   imports: [
     BrowserModule,
