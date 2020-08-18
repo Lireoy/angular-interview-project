@@ -16,6 +16,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {EqualValidator} from './email-validator/EqualValidator';
 import {CommonModule} from '@angular/common';
 import {NameValidatorComponent} from './name-validator/name-validator.component';
+import { PhoneValidatorComponent } from './phone-validator/phone-validator.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {NameValidatorComponent} from './name-validator/name-validator.component'
     EmailValidatorComponent,
     EqualValidator,
     NameValidatorComponent,
+    PhoneValidatorComponent,
   ],
   imports: [
     BrowserModule,
