@@ -16,8 +16,9 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {EqualValidator} from './email-validator/EqualValidator';
 import {CommonModule} from '@angular/common';
 import {NameValidatorComponent} from './name-validator/name-validator.component';
-import { PhoneValidatorComponent } from './phone-validator/phone-validator.component';
-import { CountryValidatorComponent } from './country-validator/country-validator.component';
+import {PhoneValidatorComponent} from './phone-validator/phone-validator.component';
+import {CountryValidatorComponent} from './country-validator/country-validator.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,9 @@ import { CountryValidatorComponent } from './country-validator/country-validator
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

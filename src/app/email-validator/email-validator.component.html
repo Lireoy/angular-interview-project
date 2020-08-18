@@ -2,10 +2,12 @@
   <mat-list-item class="input-bottom-margin">
     <mat-form-field appearance="standard" class="input-width">
       <mat-label>E-mail cím</mat-label>
-      <input type="email"
-             matInput
-             [formControl]="email"
-             placeholder="email.cim@pelda.com">
+      <input
+        type="email"
+        matInput
+        [formControl]="email"
+        placeholder="email.cim@pelda.com"
+        required>
       <mat-icon matSuffix>alternate_email</mat-icon>
       <mat-error>
         Kérem adjon meg egy valós email címet!
@@ -15,10 +17,12 @@
   <mat-list-item class="input-bottom-margin">
     <mat-form-field appearance="standard" class="input-width">
       <mat-label>E-mail cím mégegyszer</mat-label>
-      <input type="email"
-             matInput
-             [formControl]="confirmEmail"
-             placeholder="email.cim@pelda.com">
+      <input
+        type="email"
+        matInput
+        [formControl]="confirmEmail"
+        placeholder="email.cim@pelda.com"
+        required>
       <mat-icon matSuffix>alternate_email</mat-icon>
       <mat-error validateEqual="email">
         Az email cím megadása <strong>kötelező</strong>

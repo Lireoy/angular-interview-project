@@ -1,1 +1,16 @@
-<p>country-validator works!</p>
+<mat-list>
+  <mat-list-item class="input-bottom-margin">
+    <p>
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Oszrág</mat-label>
+        <mat-select [formControl]="countryControl" required>
+          <mat-option>--</mat-option>
+          <mat-option  *ngFor="let country of countries" [value]="country">
+            {{country.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="countryControl.hasError('required')">Kérem válasszon egy országot!</mat-error>
+      </mat-form-field>
+    </p>
+  </mat-list-item>
+</mat-list>

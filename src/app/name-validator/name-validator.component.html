@@ -7,7 +7,8 @@
           type="text"
           matInput
           [formControl]="lastName"
-          placeholder="Próba">
+          placeholder="Próba"
+          required>
         <mat-icon matSuffix>person</mat-icon>
         <mat-error>Legalább 2 karakter hosszú vezetéknév megadása kötelező.</mat-error>
       </mat-form-field>
@@ -21,7 +22,8 @@
           type="text"
           matInput
           [formControl]="firstName"
-          placeholder="István">
+          placeholder="István"
+          required>
         <mat-icon matSuffix>person</mat-icon>
         <mat-error>Legalább 3 karakter hosszú keresztnév megadása kötelező.</mat-error>
       </mat-form-field>
