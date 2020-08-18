@@ -1,0 +1,48 @@
+<mat-list>
+
+  <mat-list-item class="input-bottom-margin">
+    <p>
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Irányítószám</mat-label>
+        <input
+          type="text"
+          matInput
+          [formControl]="zipInput"
+          placeholder="1126"
+          required>
+        <mat-icon matSuffix>home</mat-icon>
+        <mat-error>Kérem adjon meg egy irányítószámot!</mat-error>
+      </mat-form-field>
+    </p>
+  </mat-list-item>
+
+  <mat-list-item class="input-bottom-margin">
+    <p>
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Település</mat-label>
+        <input
+          type="text"
+          matInput
+          [value]="zipCityMap.get(zipInput.value)"
+          required>
+        <mat-icon matSuffix>home</mat-icon>
+      </mat-form-field>
+    </p>
+  </mat-list-item>
+
+  <!--
+  <mat-list-item class="input-bottom-margin">
+    <p>
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Oszrág</mat-label>
+        <mat-select [formControl]="countryControl" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let country of countries" [value]="country">
+            {{country.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="countryControl.hasError('required')">Kérem válasszon egy országot!</mat-error>
+      </mat-form-field>
+    </p>
+  </mat-list-item>-->
+</mat-list>
