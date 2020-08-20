@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {ConfirmBillingDialogComponent} from '../confirm-billing-dialog/confirm-billing-dialog.component';
+import {MatDialog} from '@angular/material/dialog';
 
 interface Country {
   name: string;
@@ -12,7 +14,7 @@ interface Country {
 })
 export class ShippingAddressComponent implements OnInit {
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
   }
 
   formGroup = new FormGroup({
@@ -41,7 +43,7 @@ export class ShippingAddressComponent implements OnInit {
       Validators.minLength(4),
       Validators.maxLength(4)
     ]),
-    cityOutput: new FormControl('', [
+    city: new FormControl('', [
       Validators.required
     ]),
     newBillingAddress: new FormControl(''),
@@ -75,6 +77,29 @@ export class ShippingAddressComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmBillingDialogComponent, {
+      width: '80vw',
+
+      data: {
+        email: this.formGroup.controls.email.value,
+        lastName: this.formGroup.controls.lastName.value,
+        firstName: this.formGroup.controls.firstName.value,
+        phoneNumber: this.formGroup.controls.phoneNumber.value,
+        country: this.formGroup.controls.country.value.name,
+        zipCode: this.formGroup.controls.zipCode.value,
+        city: this.formGroup.controls.city.value,
+        newBillingAddress: this.formGroup.controls.newBillingAddress.value,
+        billingName: this.formGroup.controls.billingName.value,
+        billingTaxNumber: this.formGroup.controls.billingTaxNumber.value
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+    });
   }
 
   matchValidator(control: AbstractControl): ValidationErrors {

@@ -15,11 +15,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ConfirmBillingDialogComponent } from './confirm-billing-dialog/confirm-billing-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShippingAddressComponent
+    ShippingAddressComponent,
+    ConfirmBillingDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSelectModule,
     MatFormFieldModule,
     FormsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
