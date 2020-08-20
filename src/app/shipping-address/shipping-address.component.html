@@ -3,28 +3,203 @@
     <div>
       <h2 class="header">Alap adatok</h2>
     </div>
-    <div>
-      <app-email-validator>loading</app-email-validator>
-    </div>
-    <div>
-      <app-name-validator>loading</app-name-validator>
-    </div>
-    <div>
-      <app-phone-validator>loading</app-phone-validator>
-    </div>
-    <div>
-      <app-country-validator>loading</app-country-validator>
-    </div>
-    <div>
-      <app-zip-city-autofill>loading</app-zip-city-autofill>
-    </div>
-    <div>
-      <app-billing-address>loading</app-billing-address>
-    </div>
+    <form [formGroup]="formGroup">
+      <div>
+        <!--<app-email-validator>loading</app-email-validator>-->
+
+        <mat-list>
+          <mat-list-item class="input-bottom-margin">
+            <mat-form-field appearance="standard" class="input-width">
+              <mat-label>E-mail cím</mat-label>
+              <input
+                type="email"
+                formControlName="email"
+                placeholder="email.cim@pelda.com"
+                matInput
+                required>
+              <mat-icon matSuffix>alternate_email</mat-icon>
+              <mat-error>
+                Kérem adjon meg egy valós email címet!
+              </mat-error>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item class="input-bottom-margin">
+            <mat-form-field appearance="standard" class="input-width">
+              <mat-label>E-mail cím mégegyszer</mat-label>
+              <input
+                type="email"
+                formControlName="confirmEmail"
+                placeholder="email.cim@pelda.com"
+                matInput
+                required
+                onDrag="return false"
+                onDrop="return false"
+                onAutocomplete="return false"
+                autocomplete=off>
+              <mat-icon matSuffix>alternate_email</mat-icon>
+              <mat-error>
+                Az email címeknek egyezniük kell.
+              </mat-error>
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div>
+        <!--<app-name-validator>loading</app-name-validator>-->
+
+        <mat-list>
+          <mat-list-item class="input-bottom-margin">
+            <p>
+              <mat-form-field appearance="standard" class="input-width">
+                <mat-label>Vezetéknév</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="lastName"
+                  placeholder="Próba"
+                  required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>Legalább 2 karakter hosszú vezetéknév megadása kötelező.</mat-error>
+              </mat-form-field>
+            </p>
+          </mat-list-item>
+          <mat-list-item class="input-bottom-margin">
+            <p>
+              <mat-form-field appearance="standard" class="input-width">
+                <mat-label>Keresztnév</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="firstName"
+                  placeholder="István"
+                  required>
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error>Legalább 3 karakter hosszú keresztnév megadása kötelező.</mat-error>
+              </mat-form-field>
+            </p>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div>
+        <!--<app-phone-validator>loading</app-phone-validator>-->
+
+        <mat-list>
+          <mat-list-item class="input-bottom-margin">
+            <p>
+              <mat-form-field appearance="standard" class="input-width">
+                <mat-label>Telefonszám</mat-label>
+                <input
+                  type="tel"
+                  matInput
+                  formControlName="phoneNumber"
+                  placeholder="36309995522"
+                  required>
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error>Kérem adjon meg egy telefonszámot, mely csak számokat tartalmaz!</mat-error>
+              </mat-form-field>
+            </p>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div>
+        <!--<app-country-validator>loading</app-country-validator>-->
+
+        <mat-list>
+          <mat-list-item class="input-bottom-margin">
+            <p>
+              <mat-form-field appearance="standard" class="input-width">
+                <mat-label>Oszrág</mat-label>
+                <mat-select formControlName="country" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let country of countries" [value]="country">
+                    {{country.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-icon matSuffix>public</mat-icon>
+                <mat-error *ngIf="formGroup.controls.country.hasError('required')">Kérem válasszon egy országot!
+                </mat-error>
+              </mat-form-field>
+            </p>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div>
+        <!--<app-zip-city-autofill>loading</app-zip-city-autofill>-->
+
+        <mat-list>
+          <mat-list-item class="input-bottom-margin">
+            <p>
+              <mat-form-field appearance="standard" class="input-width">
+                <mat-label>Irányítószám</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  formControlName="zipCode"
+                  placeholder="4024"
+                  required>
+                <mat-icon matSuffix>home</mat-icon>
+                <mat-error>Kérem adjon meg egy irányítószámot!</mat-error>
+              </mat-form-field>
+            </p>
+          </mat-list-item>
+          <mat-list-item class="input-bottom-margin">
+            <p>
+              <mat-form-field appearance="standard" class="input-width">
+                <mat-label>Település</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  [value]="zipCityMap.get(formGroup.controls.zipCode.value)"
+                  placeholder="Debrecen"
+                  required>
+                <mat-icon matSuffix>home</mat-icon>
+                <mat-error>Kérem adjon meg egy várost!</mat-error>
+              </mat-form-field>
+            </p>
+          </mat-list-item>
+        </mat-list>
+      </div>
+      <div>
+        <!--<app-billing-address>loading</app-billing-address>-->
+
+        <mat-checkbox formControlName="newBillingAddress">Számlázási adatok eltérnek</mat-checkbox>
+        <mat-list *ngIf="formGroup.controls.newBillingAddress.value">
+          <mat-list-item class="input-bottom-margin">
+            <mat-form-field appearance="standard" class="input-width">
+              <mat-label>Számlázási név</mat-label>
+              <input
+                type="text"
+                formControlName="billingName"
+                placeholder="Nagy Béla"
+                matInput
+                required>
+              <mat-icon matSuffix>person</mat-icon>
+              <mat-error>
+                Legalább 5 karakter hosszú név megadása kötelező.
+              </mat-error>
+            </mat-form-field>
+          </mat-list-item>
+          <mat-list-item class="input-bottom-margin">
+            <mat-form-field appearance="standard" class="input-width">
+              <mat-label>Adószám</mat-label>
+              <input
+                type="text"
+                formControlName="billingTaxNumber"
+                placeholder="12345678-2-12"
+                matInput
+                required>
+              <mat-icon matSuffix>payment</mat-icon>
+              <mat-error>
+                Kérem adjon meg egy valós adószámot!
+              </mat-error>
+            </mat-form-field>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </form>
+
     <mat-card-actions align="end">
-      <button
-        mat-button>
-        Küldés</button>
+      <button mat-button> Küldés</button>
     </mat-card-actions>
   </mat-card>
 
