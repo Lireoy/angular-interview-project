@@ -15,11 +15,16 @@ interface City {
 export class ZipCityAutofillComponent {
 
   zipCityMap = new Map<string, string>()
+    .set('1007', 'Budapest')
     .set('4288', 'Újléta')
     .set('4024', 'Debrecen')
-    .set('1007', 'Budapest')
+    .set('4070', 'Balmazújváros')
+    .set('4110', 'Biharkeresztes')
+    .set('6200', 'Kiskőrös')
+    .set('6727', 'Szeged')
     .set('8900', 'Zalaegerszeg')
-    .set('9024', 'Győr');
+    .set('9024', 'Győr')
+    .set('9407', 'Sopron');
 
   zipInput = new FormControl('', [
     Validators.required,
@@ -28,7 +33,9 @@ export class ZipCityAutofillComponent {
     Validators.maxLength(4)
   ]);
 
-  cityOutput = new FormControl(this.zipCityMap.get(this.zipInput.value));
+  cityOutput = new FormControl('', [
+    Validators.required
+  ]);
 
   /*
   zips: City[] = [
