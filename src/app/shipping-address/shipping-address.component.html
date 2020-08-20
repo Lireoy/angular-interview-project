@@ -5,8 +5,6 @@
     </div>
     <form [formGroup]="formGroup">
       <div>
-        <!--<app-email-validator>loading</app-email-validator>-->
-
         <mat-list>
           <mat-list-item class="input-bottom-margin">
             <mat-form-field appearance="standard" class="input-width">
@@ -45,8 +43,6 @@
         </mat-list>
       </div>
       <div>
-        <!--<app-name-validator>loading</app-name-validator>-->
-
         <mat-list>
           <mat-list-item class="input-bottom-margin">
             <p>
@@ -81,8 +77,6 @@
         </mat-list>
       </div>
       <div>
-        <!--<app-phone-validator>loading</app-phone-validator>-->
-
         <mat-list>
           <mat-list-item class="input-bottom-margin">
             <p>
@@ -102,8 +96,6 @@
         </mat-list>
       </div>
       <div>
-        <!--<app-country-validator>loading</app-country-validator>-->
-
         <mat-list>
           <mat-list-item class="input-bottom-margin">
             <p>
@@ -124,8 +116,6 @@
         </mat-list>
       </div>
       <div>
-        <!--<app-zip-city-autofill>loading</app-zip-city-autofill>-->
-
         <mat-list>
           <mat-list-item class="input-bottom-margin">
             <p>
@@ -160,8 +150,6 @@
         </mat-list>
       </div>
       <div>
-        <!--<app-billing-address>loading</app-billing-address>-->
-
         <mat-checkbox formControlName="newBillingAddress">Számlázási adatok eltérnek</mat-checkbox>
         <mat-list *ngIf="formGroup.controls.newBillingAddress.value">
           <mat-list-item class="input-bottom-margin">
@@ -197,7 +185,6 @@
         </mat-list>
       </div>
     </form>
-
     <mat-card-actions align="end">
       <button mat-button> Küldés</button>
     </mat-card-actions>
