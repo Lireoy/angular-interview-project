@@ -3,7 +3,7 @@
     <div>
       <h2 class="header">Alap adatok</h2>
     </div>
-    <form [formGroup]="formGroup">
+    <form [formGroup]="basicData">
       <div>
         <mat-list>
           <mat-list-item class="input-bottom-margin">
@@ -108,7 +108,7 @@
                   </mat-option>
                 </mat-select>
                 <mat-icon matSuffix>public</mat-icon>
-                <mat-error *ngIf="formGroup.controls.country.hasError('required')">Kérem válasszon egy országot!
+                <mat-error *ngIf="basicData.controls.country.hasError('required')">Kérem válasszon egy országot!
                 </mat-error>
               </mat-form-field>
             </p>
@@ -140,7 +140,7 @@
                   type="text"
                   matInput
                   formControlName="city"
-                  [value]="zipCityMap.get(formGroup.controls.zipCode.value)"
+                  value="{{zipCityMap.get(basicData.controls.zipCode.value)}}"
                   placeholder="Debrecen"
                   required>
                 <mat-icon matSuffix>home</mat-icon>
@@ -150,9 +150,11 @@
           </mat-list-item>
         </mat-list>
       </div>
+    </form>
+    <form [formGroup]="billingData">
       <div>
         <mat-checkbox formControlName="newBillingAddress">Számlázási adatok eltérnek</mat-checkbox>
-        <mat-list *ngIf="formGroup.controls.newBillingAddress.value">
+        <mat-list *ngIf="billingData.controls.newBillingAddress.value">
           <mat-list-item class="input-bottom-margin">
             <mat-form-field appearance="standard" class="input-width">
               <mat-label>Számlázási név</mat-label>

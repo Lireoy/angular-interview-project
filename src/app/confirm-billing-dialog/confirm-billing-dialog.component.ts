@@ -1,19 +1,11 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {ShippingAddressComponent} from '../shipping-address/shipping-address.component';
+import {FormGroup} from '@angular/forms';
 
 export interface DialogData {
-  email: string;
-  confirmEmail: string;
-  lastName: string;
-  firstName: string;
-  phoneNumber: number;
-  country: string;
-  zipCode: string;
-  city: string;
-  newBillingAddress: string;
-  billingName: string;
-  billingTaxNumber: string;
+  basicData: FormGroup;
+  billingData: FormGroup;
 }
 
 @Component({
@@ -34,6 +26,8 @@ export class ConfirmBillingDialogComponent {
 
   onOkClick(): void {
     this.dialogRef.close();
+    this.data.basicData.reset('');
+    this.data.billingData.reset('');
   }
 
 }

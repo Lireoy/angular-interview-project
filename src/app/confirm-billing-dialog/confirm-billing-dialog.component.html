@@ -1,132 +1,99 @@
 <h1 mat-dialog-title>Adatok ellenőrzése</h1>
 <div mat-dialog-content>
-  <div>
-    <mat-list>
-      <mat-list-item class="input-bottom-margin">
-        <mat-form-field appearance="standard" class="input-width">
-          <mat-label>E-mail cím</mat-label>
-          <input
-            value="{{data.email}}"
-            matInput
-            disabled>
-          <mat-icon matSuffix>alternate_email</mat-icon>
-        </mat-form-field>
-      </mat-list-item>
-    </mat-list>
-  </div>
-  <div>
-    <mat-list>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>Vezetéknév</mat-label>
-            <input
-              value="{{data.lastName}}"
-              matInput
-              disabled>
-            <mat-icon matSuffix>person</mat-icon>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>Keresztnév</mat-label>
-            <input
-              value="{{data.firstName}}"
-              matInput
-              disabled>
-            <mat-icon matSuffix>person</mat-icon>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
-    </mat-list>
-  </div>
-  <div>
-    <mat-list>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>Telefonszám</mat-label>
-            <input
-              value="{{data.phoneNumber}}"
-              matInput
-              disabled>
-            <mat-icon matSuffix>phone</mat-icon>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
-    </mat-list>
-  </div>
-  <div>
-    <mat-list>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>Ország</mat-label>
-            <input
-              value="{{data.country}}"
-              matInput
-              disabled>
-            <mat-icon matSuffix>phone</mat-icon>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
-    </mat-list>
-  </div>
-  <div>
-    <mat-list>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>Irányítószám</mat-label>
-            <input
-              value="{{data.zipCode}}"
-              matInput
-              disabled>
-            <mat-icon matSuffix>home</mat-icon>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
-      <mat-list-item class="input-bottom-margin">
-        <p>
-          <mat-form-field appearance="standard" class="input-width">
-            <mat-label>Település</mat-label>
-            <input
-              [value]="data.city"
-              matInput
-              disabled>
-            <mat-icon matSuffix>home</mat-icon>
-          </mat-form-field>
-        </p>
-      </mat-list-item>
-    </mat-list>
-  </div>
-
-  <!--<div>
-    <mat-list>
-      <mat-list-item>
-        <h5>Email</h5>
-        <mat-label>{{data.email}}</mat-label>
-      </mat-list-item>
-      <mat-list-item>
-        <h4>Név</h4>
-        <mat-label>{{data.lastName}} {{data.firstName}}</mat-label>
-      </mat-list-item>
-      <mat-list-item>
-        <h4>Telefonszám</h4>
-        <mat-label>{{data.phoneNumber}}</mat-label>
-      </mat-list-item>
-      <mat-list-item>
+  <mat-list>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>E-mail cím</mat-label>
+        <input
+          value="{{data.basicData.controls.email.value}}"
+          matInput
+          disabled>
+        <mat-icon matSuffix>alternate_email</mat-icon>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Vezetéknév</mat-label>
+        <input
+          value="{{data.basicData.controls.lastName.value}}"
+          matInput
+          disabled>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Keresztnév</mat-label>
+        <input
+          value="{{data.basicData.controls.firstName.value}}"
+          matInput
+          disabled>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Telefonszám</mat-label>
+        <input
+          value="{{data.basicData.controls.phoneNumber.value}}"
+          matInput
+          disabled>
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
         <mat-label>Ország</mat-label>
-        <p>{{data.country}}</p>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-label>Cím</mat-label>
-        <p>{{data.zipCode}} {{data.city}}</p>
-      </mat-list-item>
-    </mat-list>
-  </div>-->
+        <input
+          value="{{data.basicData.controls.country.value.name}}"
+          matInput
+          disabled>
+        <mat-icon matSuffix>phone</mat-icon>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Irányítószám</mat-label>
+        <input
+          value="{{data.basicData.controls.zipCode.value}}"
+          matInput
+          disabled>
+        <mat-icon matSuffix>home</mat-icon>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Település</mat-label>
+        <input
+          value="{{data.basicData.controls.city.value}}"
+          matInput
+          disabled>
+        <mat-icon matSuffix>home</mat-icon>
+      </mat-form-field>
+    </mat-list-item>
+  </mat-list>
+  <mat-list *ngIf="data.billingData.controls.newBillingAddress.value">
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Számlázási név</mat-label>
+        <input
+          value="{{data.billingData.controls.billingName.value}}"
+          matInput
+          disabled>
+        <mat-icon matSuffix>home</mat-icon>
+      </mat-form-field>
+    </mat-list-item>
+    <mat-list-item class="input-bottom-margin">
+      <mat-form-field appearance="standard" class="input-width">
+        <mat-label>Adószám</mat-label>
+        <input
+          value="{{data.billingData.controls.billingTaxNumber.value}}"
+          matInput
+          disabled>
+        <mat-icon matSuffix>home</mat-icon>
+      </mat-form-field>
+    </mat-list-item>
+  </mat-list>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onModifyClick()">Módosítás</button>

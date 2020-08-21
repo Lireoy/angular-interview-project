@@ -17,7 +17,7 @@ export class ShippingAddressComponent implements OnInit {
   constructor(public dialog: MatDialog) {
   }
 
-  formGroup = new FormGroup({
+  basicData = new FormGroup({
     email: new FormControl('', [
       Validators.required,
       Validators.email,
@@ -39,13 +39,14 @@ export class ShippingAddressComponent implements OnInit {
     country: new FormControl('', Validators.required),
     zipCode: new FormControl('', [
       Validators.required,
-      Validators.pattern('[0-9]*'),
-      Validators.minLength(4),
-      Validators.maxLength(4)
+      Validators.pattern('[0-9]{4}')
     ]),
     city: new FormControl('', [
       Validators.required
-    ]),
+    ])
+  });
+
+  billingData = new FormGroup({
     newBillingAddress: new FormControl(''),
     billingName: new FormControl('', [
       Validators.required,
@@ -80,26 +81,35 @@ export class ShippingAddressComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(ConfirmBillingDialogComponent, {
-      width: '80vw',
+    if (this.basicData.invalid || (this.billingData.controls.newBillingAddress.value && this.billingData.invalid)) {
+      this.basicData.controls.email.markAsTouched();
+      this.basicData.controls.confirmEmail.markAsTouched();
+      this.basicData.controls.lastName.markAsTouched();
+      this.basicData.controls.firstName.markAsTouched();
+      this.basicData.controls.phoneNumber.markAsTouched();
+      this.basicData.controls.country.markAsTouched();
+      this.basicData.controls.zipCode.markAsTouched();
+      this.basicData.controls.city.markAsTouched();
 
-      data: {
-        email: this.formGroup.controls.email.value,
-        lastName: this.formGroup.controls.lastName.value,
-        firstName: this.formGroup.controls.firstName.value,
-        phoneNumber: this.formGroup.controls.phoneNumber.value,
-        country: this.formGroup.controls.country.value.name,
-        zipCode: this.formGroup.controls.zipCode.value,
-        city: this.formGroup.controls.city.value,
-        newBillingAddress: this.formGroup.controls.newBillingAddress.value,
-        billingName: this.formGroup.controls.billingName.value,
-        billingTaxNumber: this.formGroup.controls.billingTaxNumber.value
+
+      if (this.billingData.controls.newBillingAddress.value) {
+        this.billingData.controls.billingName.markAsTouched();
+        this.billingData.controls.billingTaxNumber.markAsTouched();
       }
-    });
+    } else {
+      const dialogRef = this.dialog.open(ConfirmBillingDialogComponent, {
+        width: '60vw',
 
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
-    });
+        data: {
+          basicData: this.basicData,
+          billingData: this.billingData
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(() => {
+        console.log('The dialog was closed');
+      });
+    }
   }
 
   matchValidator(control: AbstractControl): ValidationErrors {
