@@ -112,6 +112,10 @@ export class ShippingAddressComponent implements OnInit {
     }
   }
 
+  pasteEvent(event: ClipboardEvent): void {
+    event.preventDefault();
+  }
+
   matchValidator(control: AbstractControl): ValidationErrors {
     if (!control.parent) {
       return {error: 'Parent null'};
