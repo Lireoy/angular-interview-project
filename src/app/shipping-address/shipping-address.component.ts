@@ -41,9 +41,7 @@ export class ShippingAddressComponent implements OnInit {
       Validators.required,
       Validators.pattern('[0-9]{4}')
     ]),
-    city: new FormControl('', [
-      Validators.required
-    ])
+    city: new FormControl('')
   });
 
   billingData = new FormGroup({
@@ -112,10 +110,6 @@ export class ShippingAddressComponent implements OnInit {
     }
   }
 
-  pasteEvent(event: ClipboardEvent): void {
-    event.preventDefault();
-  }
-
   matchValidator(control: AbstractControl): ValidationErrors {
     if (!control.parent) {
       return {error: 'Parent null'};
@@ -129,5 +123,13 @@ export class ShippingAddressComponent implements OnInit {
     } else {
       return null;
     }
+  }
+
+  pasteEvent(event: ClipboardEvent): void {
+    event.preventDefault();
+  }
+
+  zipCodeChange(): void {
+    this.basicData.controls.city.setValue(this.zipCityMap.get(this.basicData.controls.zipCode.value));
   }
 }

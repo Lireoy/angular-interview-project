@@ -125,6 +125,7 @@
                 <input
                   type="text"
                   matInput
+                  (change)="zipCodeChange()"
                   formControlName="zipCode"
                   placeholder="4024"
                   required>
@@ -141,7 +142,6 @@
                   type="text"
                   matInput
                   formControlName="city"
-                  value="{{zipCityMap.get(basicData.controls.zipCode.value)}}"
                   placeholder="Debrecen"
                   required>
                 <mat-icon matSuffix>home</mat-icon>
@@ -173,7 +173,7 @@
           </mat-list-item>
           <mat-list-item class="input-bottom-margin">
             <mat-form-field appearance="standard" class="input-width">
-              <mat-label>Adószám</mat-label>
+              <mat-label>Számlázási adószám</mat-label>
               <input
                 type="text"
                 formControlName="billingTaxNumber"
