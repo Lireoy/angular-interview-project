@@ -5,6 +5,10 @@ This project and it's source was written by Bence Szabo.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
+## First start
+NodeJS v12.18.3, NPM 6.14.6 was used for development. Before starting the application, please run the 'npm install' command in the project directory.
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
