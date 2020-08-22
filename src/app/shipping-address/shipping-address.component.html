@@ -10,11 +10,11 @@
             <mat-form-field appearance="standard" class="input-width">
               <mat-label>E-mail cím</mat-label>
               <input
-                type="email"
                 formControlName="email"
-                placeholder="email.cim@pelda.com"
                 matInput
-                required>
+                placeholder="email.cim@pelda.com"
+                required
+                type="email">
               <mat-icon matSuffix>alternate_email</mat-icon>
               <mat-error>
                 Kérem adjon meg egy valós email címet!
@@ -25,16 +25,16 @@
             <mat-form-field appearance="standard" class="input-width">
               <mat-label>E-mail cím mégegyszer</mat-label>
               <input
-                type="email"
-                formControlName="confirmEmail"
-                placeholder="email.cim@pelda.com"
-                matInput
-                required
                 (paste)="pasteEvent($event)"
+                autocomplete=off
+                formControlName="confirmEmail"
+                matInput
+                onAutocomplete="return false"
                 onDrag="return false"
                 onDrop="return false"
-                onAutocomplete="return false"
-                autocomplete=off>
+                placeholder="email.cim@pelda.com"
+                required
+                type="email">
               <mat-icon matSuffix>alternate_email</mat-icon>
               <mat-error>
                 Az email címeknek egyezniük kell.
@@ -50,11 +50,11 @@
               <mat-form-field appearance="standard" class="input-width">
                 <mat-label>Vezetéknév</mat-label>
                 <input
-                  type="text"
-                  matInput
                   formControlName="lastName"
+                  matInput
                   placeholder="Próba"
-                  required>
+                  required
+                  type="text">
                 <mat-icon matSuffix>person</mat-icon>
                 <mat-error>Legalább 2 karakter hosszú vezetéknév megadása kötelező.</mat-error>
               </mat-form-field>
@@ -65,11 +65,11 @@
               <mat-form-field appearance="standard" class="input-width">
                 <mat-label>Keresztnév</mat-label>
                 <input
-                  type="text"
-                  matInput
                   formControlName="firstName"
+                  matInput
                   placeholder="István"
-                  required>
+                  required
+                  type="text">
                 <mat-icon matSuffix>person</mat-icon>
                 <mat-error>Legalább 3 karakter hosszú keresztnév megadása kötelező.</mat-error>
               </mat-form-field>
@@ -84,11 +84,11 @@
               <mat-form-field appearance="standard" class="input-width">
                 <mat-label>Telefonszám</mat-label>
                 <input
-                  type="tel"
-                  matInput
                   formControlName="phoneNumber"
+                  matInput
                   placeholder="36309995522"
-                  required>
+                  required
+                  type="tel">
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error>Kérem adjon meg egy telefonszámot, mely csak számokat tartalmaz!</mat-error>
               </mat-form-field>
@@ -123,12 +123,12 @@
               <mat-form-field appearance="standard" class="input-width">
                 <mat-label>Irányítószám</mat-label>
                 <input
-                  type="text"
-                  matInput
                   (change)="zipCodeChange()"
                   formControlName="zipCode"
+                  matInput
                   placeholder="4024"
-                  required>
+                  required
+                  type="text">
                 <mat-icon matSuffix>home</mat-icon>
                 <mat-error>Kérem adjon meg egy irányítószámot!</mat-error>
               </mat-form-field>
@@ -139,11 +139,11 @@
               <mat-form-field appearance="standard" class="input-width">
                 <mat-label>Település</mat-label>
                 <input
-                  type="text"
-                  matInput
                   formControlName="city"
+                  matInput
                   placeholder="Debrecen"
-                  required>
+                  required
+                  type="text">
                 <mat-icon matSuffix>home</mat-icon>
                 <mat-error>Kérem adjon meg egy várost!</mat-error>
               </mat-form-field>
@@ -160,11 +160,11 @@
             <mat-form-field appearance="standard" class="input-width">
               <mat-label>Számlázási név</mat-label>
               <input
-                type="text"
                 formControlName="billingName"
-                placeholder="Nagy Béla"
                 matInput
-                required>
+                placeholder="Nagy Béla"
+                required
+                type="text">
               <mat-icon matSuffix>person</mat-icon>
               <mat-error>
                 Legalább 5 karakter hosszú név megadása kötelező.
@@ -175,11 +175,11 @@
             <mat-form-field appearance="standard" class="input-width">
               <mat-label>Számlázási adószám</mat-label>
               <input
-                type="text"
                 formControlName="billingTaxNumber"
-                placeholder="12345678-2-12"
                 matInput
-                required>
+                placeholder="12345678-2-12"
+                required
+                type="text">
               <mat-icon matSuffix>payment</mat-icon>
               <mat-error>
                 Kérem adjon meg egy valós adószámot!
@@ -190,7 +190,7 @@
       </div>
     </form>
     <mat-card-actions align="end">
-      <button mat-button (click)="openDialog()"> Küldés</button>
+      <button (click)="openDialog()" mat-button> Küldés</button>
     </mat-card-actions>
   </mat-card>
 

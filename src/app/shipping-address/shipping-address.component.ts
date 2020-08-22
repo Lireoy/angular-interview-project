@@ -3,6 +3,14 @@ import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} f
 import {ConfirmBillingDialogComponent} from '../confirm-billing-dialog/confirm-billing-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 
+/**
+ * @author Bence Szabo
+ */
+
+
+/**
+ * Interface for storing countries.
+ */
 interface Country {
   name: string;
 }
@@ -14,9 +22,10 @@ interface Country {
 })
 export class ShippingAddressComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) {
-  }
-
+  /**
+   * This FormGroup contains all the default required inputs' control,
+   * and validation is handled here.
+   */
   basicData = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -24,7 +33,7 @@ export class ShippingAddressComponent implements OnInit {
       Validators.pattern('^[a-z0-9.%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')
     ]),
     confirmEmail: new FormControl('', [
-      this.matchValidator
+      this.matchValidator // custom validator
     ]),
     lastName: new FormControl('', [
       Validators.required,
@@ -43,7 +52,10 @@ export class ShippingAddressComponent implements OnInit {
     ]),
     city: new FormControl('')
   });
-
+  /**
+   * This FormGroup contains the new billing data
+   * inputs' control, and validation for them is handled here.
+   */
   billingData = new FormGroup({
     newBillingAddress: new FormControl(''),
     billingName: new FormControl('', [
@@ -54,7 +66,10 @@ export class ShippingAddressComponent implements OnInit {
       Validators.pattern('[0-9]{8}?-[0-9]{1}?-[0-9]{2}')
     ])
   });
-
+  /**
+   * A Map to hold zip codes and city names,
+   * respective to each other.
+   */
   zipCityMap = new Map<string, string>()
     .set('1007', 'Budapest')
     .set('4288', 'Újléta')
@@ -66,7 +81,9 @@ export class ShippingAddressComponent implements OnInit {
     .set('8900', 'Zalaegerszeg')
     .set('9024', 'Győr')
     .set('9407', 'Sopron');
-
+  /**
+   * An Array of Country objects, to hold country names.
+   */
   countries: Country[] = [
     {name: 'Magyaroszág'},
     {name: 'Románia'},
@@ -75,9 +92,21 @@ export class ShippingAddressComponent implements OnInit {
     {name: 'Szlovénia'}
   ];
 
+  constructor(public dialog: MatDialog) {
+  }
+
   ngOnInit(): void {
   }
 
+  /**
+   * Method to open a dialog upon submit click.
+   * If no separate billing data is provided, this marks
+   * all inputs as touched, making validation errors show up,
+   * if there is any.
+   *
+   * If the billing data is provided, this method marks them touched
+   * as well, making their validation error show up too.
+   */
   openDialog(): void {
     if (this.basicData.invalid || (this.billingData.controls.newBillingAddress.value && this.billingData.invalid)) {
       this.basicData.controls.email.markAsTouched();
@@ -95,7 +124,7 @@ export class ShippingAddressComponent implements OnInit {
         this.billingData.controls.billingTaxNumber.markAsTouched();
       }
     } else {
-      const dialogRef = this.dialog.open(ConfirmBillingDialogComponent, {
+      this.dialog.open(ConfirmBillingDialogComponent, {
         width: '60vw',
 
         data: {
@@ -103,13 +132,15 @@ export class ShippingAddressComponent implements OnInit {
           billingData: this.billingData
         }
       });
-
-      dialogRef.afterClosed().subscribe(() => {
-        console.log('The dialog was closed');
-      });
     }
   }
 
+  /**
+   * Custom validator to match two input fields against
+   * each other, whether they are matching or not.
+   * @param control Object, which holds controls to the email inputs
+   * @return ValidationErrors if not matching, otherwise null
+   */
   matchValidator(control: AbstractControl): ValidationErrors {
     if (!control.parent) {
       return {error: 'Parent null'};
@@ -125,10 +156,20 @@ export class ShippingAddressComponent implements OnInit {
     }
   }
 
+  /**
+   * This method is responsible for preventing paste
+   * event on the confirm email address.
+   * @param event the ClipboardEvent which triggered this method
+   */
   pasteEvent(event: ClipboardEvent): void {
     event.preventDefault();
   }
 
+  /**
+   * This method is responsible for autofilling
+   * the city input, based on the zip code found in the
+   * zip code input field.
+   */
   zipCodeChange(): void {
     this.basicData.controls.city.setValue(this.zipCityMap.get(this.basicData.controls.zipCode.value));
   }

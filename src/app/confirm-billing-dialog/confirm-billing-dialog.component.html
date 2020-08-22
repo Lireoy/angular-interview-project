@@ -5,9 +5,9 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>E-mail cím</mat-label>
         <input
-          value="{{data.basicData.controls.email.value}}"
+          disabled
           matInput
-          disabled>
+          value="{{data.basicData.controls.email.value}}">
         <mat-icon matSuffix>alternate_email</mat-icon>
       </mat-form-field>
     </mat-list-item>
@@ -15,9 +15,9 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>Vezetéknév</mat-label>
         <input
-          value="{{data.basicData.controls.lastName.value}}"
+          disabled
           matInput
-          disabled>
+          value="{{data.basicData.controls.lastName.value}}">
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
     </mat-list-item>
@@ -25,9 +25,9 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>Keresztnév</mat-label>
         <input
-          value="{{data.basicData.controls.firstName.value}}"
+          disabled
           matInput
-          disabled>
+          value="{{data.basicData.controls.firstName.value}}">
         <mat-icon matSuffix>person</mat-icon>
       </mat-form-field>
     </mat-list-item>
@@ -35,9 +35,9 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>Telefonszám</mat-label>
         <input
-          value="{{data.basicData.controls.phoneNumber.value}}"
+          disabled
           matInput
-          disabled>
+          value="{{data.basicData.controls.phoneNumber.value}}">
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
     </mat-list-item>
@@ -45,9 +45,9 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>Ország</mat-label>
         <input
-          value="{{data.basicData.controls.country.value.name}}"
+          disabled
           matInput
-          disabled>
+          value="{{data.basicData.controls.country.value.name}}">
         <mat-icon matSuffix>phone</mat-icon>
       </mat-form-field>
     </mat-list-item>
@@ -55,9 +55,9 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>Irányítószám</mat-label>
         <input
-          value="{{data.basicData.controls.zipCode.value}}"
+          disabled
           matInput
-          disabled>
+          value="{{data.basicData.controls.zipCode.value}}">
         <mat-icon matSuffix>home</mat-icon>
       </mat-form-field>
     </mat-list-item>
@@ -65,9 +65,9 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>Település</mat-label>
         <input
-          value="{{data.basicData.controls.city.value}}"
+          disabled
           matInput
-          disabled>
+          value="{{data.basicData.controls.city.value}}">
         <mat-icon matSuffix>home</mat-icon>
       </mat-form-field>
     </mat-list-item>
@@ -77,9 +77,9 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>Számlázási név</mat-label>
         <input
-          value="{{data.billingData.controls.billingName.value}}"
+          disabled
           matInput
-          disabled>
+          value="{{data.billingData.controls.billingName.value}}">
         <mat-icon matSuffix>home</mat-icon>
       </mat-form-field>
     </mat-list-item>
@@ -87,15 +87,15 @@
       <mat-form-field appearance="standard" class="input-width">
         <mat-label>Számlázási adószám</mat-label>
         <input
-          value="{{data.billingData.controls.billingTaxNumber.value}}"
+          disabled
           matInput
-          disabled>
+          value="{{data.billingData.controls.billingTaxNumber.value}}">
         <mat-icon matSuffix>home</mat-icon>
       </mat-form-field>
     </mat-list-item>
   </mat-list>
 </div>
-<div mat-dialog-actions align="end">
-  <button tabindex="-1" mat-button (click)="onModifyClick()">Módosítás</button>
-  <button tabindex="-1" mat-button (click)="onOkClick()">Helyes</button>
+<div align="end" mat-dialog-actions>
+  <button (click)="onModifyClick()" mat-button tabindex="-1">Módosítás</button>
+  <button (click)="onOkClick()" mat-button tabindex="-1">Helyes</button>
 </div>
