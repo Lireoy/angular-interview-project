@@ -1,7 +1,7 @@
 # Author
 This project and it's source was written by Bence Szabo.
 
-# AngularUdinfopark
+# Angular-interview-project
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.5.
 
